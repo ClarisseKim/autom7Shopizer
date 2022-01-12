@@ -29,21 +29,30 @@ public class HomePage extends BasePage {
 	@FindBy(css = "[item-name=\"Compact night table\"]  > div >[class=\"listing-product-name\"]")
 	public WebElement compactNightTable;
 
+	@FindBy(css = "[class=\"mainmenu hidden-xs\"] > nav > ul > li > a[href^=\"\\/shop\\/category\\/tables\\.html\"]")
+	public WebElement tablesBtn;
+
 	// Methods
 
-	public NightTablesPage openTablePage() {
+	public NightTablesPage openNightTablesPage() {
 		Actions action = new Actions(driver);
 		action.moveToElement(bedroomBtn).perform();
 		wait.until(ExpectedConditions.visibilityOf(nightTableBtn));
 		nightTableBtn.click();
-		// marche pas : 
+		// marche pas :
 		// Actions action2 = new Actions(driver);
 		// action2.moveToElement(compactNightTable).perform();
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", compactNightTable);
 		// wait.until(ExpectedConditions.elementToBeClickable(compactNightTable));
 		// compactNightTable.click(); not necessary with the javascript executor
 		return new NightTablesPage(this.driver);
+	}
+
+	public TablesPage openTablesPage() {
+		wait.until(ExpectedConditions.elementToBeClickable(tablesBtn));
+		tablesBtn.click();
+		return new TablesPage(this.driver);
 	}
 
 }

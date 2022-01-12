@@ -8,16 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class NightTablesPage extends BasePage {
 
 	public NightTablesPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		super(driver);
-		// this.driver = driver;
 	}
 
 	// Locators
 
 	@FindBy(css = "[item-name=\"Compact night table\"]  > div >[class=\"listing-product-name\"]")
 	public WebElement compactNightTable;
-	
+
 	// locator img from the result page, not used as of now
 	// @FindBy(css = "[item-name=\"Compact night table\"] [class=\"thumbnail
 	// product-img\"]")
