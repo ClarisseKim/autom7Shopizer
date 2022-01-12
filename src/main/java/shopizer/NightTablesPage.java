@@ -3,12 +3,13 @@ package shopizer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NightTablesPage {
+public class NightTablesPage extends BasePage {
 
 	public NightTablesPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		super();
+		super(driver);
 		// this.driver = driver;
 	}
 
@@ -40,6 +41,7 @@ public class NightTablesPage {
 	// Methods
 
 	public String exractDevise() {
+		wait.until(ExpectedConditions.visibilityOf(compactNightTableInitPrice));
 		String price = compactNightTableInitPrice.getText();
 		// System.out.println(price.substring(0, 3));
 		String devise = price.substring(0, 3);

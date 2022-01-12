@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 // import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 // import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -52,29 +53,38 @@ public class BedroomTest {
 
 		homePage.openTablePage();
 		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// can't make it work
+		// wait.until(ExpectedConditions.visibilityOf(nightTablesPage.compactNightTableInitPrice));
 		assertEquals(true, nightTablesPage.compactNightTableInitPrice.isDisplayed());
 		boolean result2 = nightTablesPage.compactNightTableInitPrice.isDisplayed();
-		System.out.println("Status of Compact Night Table is" + result2);
+		System.out.println("Price is " + result2);
 		
 		assertEquals(true, nightTablesPage.compactNightTablePromPrice.isDisplayed());
 		boolean result3 = nightTablesPage.compactNightTablePromPrice.isDisplayed();
-		System.out.println("Status of Compact Night Table is" + result3);
+		System.out.println("Promotional price is " + result3);
 		
 		assertEquals(true, nightTablesPage.compactNightTableName.isDisplayed());
 		boolean result4 = nightTablesPage.compactNightTableName.isDisplayed();
-		System.out.println("Status of Compact Night Table is" + result4);
+		System.out.println("Name is " + result4);
 		
 		assertEquals(true, nightTablesPage.compactNightTableStars.isDisplayed());
 		boolean result5 = nightTablesPage.compactNightTableStars.isDisplayed();
-		System.out.println("Status of Compact Night Table is" + result5);
+		System.out.println("Rating is " + result5);
 		
 		assertEquals(true, nightTablesPage.compactNightTableAddToCartBtn.isDisplayed());
 		boolean result6 = nightTablesPage.compactNightTableAddToCartBtn.isDisplayed();
-		System.out.println("Status of Compact Night Table is" + result6);
+		System.out.println("Add to cart button is " + result6);
 		
 		String devise = nightTablesPage.exractDevise();
 		assertEquals(devise, "US$");
-		System.out.println("devise is" + devise);
+		System.out.println("devise is " + devise);
 		
 	}
 

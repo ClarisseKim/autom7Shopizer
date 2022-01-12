@@ -42,7 +42,7 @@ public class HomePage extends BasePage {
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", compactNightTable);
 		// wait.until(ExpectedConditions.elementToBeClickable(compactNightTable));
-		compactNightTable.click();
+		// compactNightTable.click(); not necessary with the javascript executor
 		return new NightTablesPage(this.driver);
 	}
 
