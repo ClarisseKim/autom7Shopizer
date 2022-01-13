@@ -32,6 +32,12 @@ public class TablesPage extends BasePage {
 	@FindBy(css = "[id=\"productsContainer\"] > [class$=\"product\"] > [class=\"product-content text-center\"] > a > h3")
 	WebElement coffeTablePageLink;
 
+	@FindBy(css = "h3[itemprop=\"name\"]")
+	WebElement coffeeTableName;
+
+	@FindBy(css = "h4 [itemprop=\"price\"]")
+	WebElement coffeeTablePrice;
+
 	// Methods
 
 	public void clickAsianWoodFilter() {
@@ -43,9 +49,7 @@ public class TablesPage extends BasePage {
 	}
 
 	public String asianWoodFilter() {
-		// wait.until(ExpectedConditions.visibilityOf(compactNightTableInitPrice));
 		String asianWoodFilterExtractText = asianWoodFilterText.getText();
-		// System.out.println(price.substring(0, 3));
 		return asianWoodFilterExtractText;
 	}
 
@@ -53,6 +57,16 @@ public class TablesPage extends BasePage {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", coffeTablePageLink);
 		return new CoffeeTablePage(this.driver);
+	}
+
+	public String coffeeTableName() {
+		String coffeeTableExtractName = coffeeTableName.getText();
+		return coffeeTableExtractName;
+	}
+
+	public String coffeeTablePrice() {
+		String coffeeTableExtractPrice = coffeeTablePrice.getText();
+		return coffeeTableExtractPrice;
 	}
 
 }

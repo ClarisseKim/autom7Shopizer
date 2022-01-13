@@ -15,7 +15,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,30 +27,37 @@ public class ShopizerCatTest {
 
 	@Before
 	public void setUp() throws Exception {
-		// System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
-		// System.setProperty("webdriver.edge.driver", "src/main/resources/driver/msedgedriver.exe");
-		// System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+		// System.setProperty("webdriver.gecko.driver",
+		// "src/main/resources/driver/geckodriver.exe");
+		// System.setProperty("webdriver.edge.driver",
+		// "src/main/resources/driver/msedgedriver.exe");
+		// System.setProperty("webdriver.chrome.driver",
+		// "src/main/resources/driver/chromedriver.exe");
 		String browser = System.getProperty("browser");
 		// driver = new ChromeDriver();
 		// driver = new FirefoxDriver();
 		// driver = new EdgeDriver();
 
-		
-		 if (browser.equalsIgnoreCase("Firefox")) {
-		 System.setProperty("webdriver.gecko.driver",
-		 "src/main/resources/driver/geckodriver.exe"); driver = new FirefoxDriver(); }
-		 
-		 else if (browser.equalsIgnoreCase("Chrome")) {
-		 System.setProperty("webdriver.chrome.driver",
-		 "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
-		 
-		 else if (browser.equalsIgnoreCase("Edge")) {
-		 System.setProperty("webdriver.edge.driver",
-		 "src/main/resources/driver/msedgedriver.exe"); driver = new EdgeDriver(); }
-		  
-		 else { System.setProperty("webdriver.chrome.driver",
-		 "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
-		 
+		if (browser.equalsIgnoreCase("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+
+		else if (browser.equalsIgnoreCase("Chrome")) {
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+
+		else if (browser.equalsIgnoreCase("Edge")) {
+			System.setProperty("webdriver.edge.driver", "src/main/resources/driver/msedgedriver.exe");
+			driver = new EdgeDriver();
+		}
+
+		else {
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+
 		driver.manage().window().maximize();
 	}
 
@@ -76,23 +82,23 @@ public class ShopizerCatTest {
 
 		assertEquals(true, nightTablesPage.compactNightTableInitPrice.isDisplayed());
 		boolean result2 = nightTablesPage.compactNightTableInitPrice.isDisplayed();
-		LOGGER.info("Price is " + result2);
+		LOGGER.info("Price is displayed : " + result2);
 
 		assertEquals(true, nightTablesPage.compactNightTablePromPrice.isDisplayed());
 		boolean result3 = nightTablesPage.compactNightTablePromPrice.isDisplayed();
-		LOGGER.info("Promotional price is " + result3);
+		LOGGER.info("Promotional price is displayed : " + result3);
 
 		assertEquals(true, nightTablesPage.compactNightTableName.isDisplayed());
 		boolean result4 = nightTablesPage.compactNightTableName.isDisplayed();
-		LOGGER.info("Name is " + result4);
+		LOGGER.info("Name is displayed : " + result4);
 
 		assertEquals(true, nightTablesPage.compactNightTableStars.isDisplayed());
 		boolean result5 = nightTablesPage.compactNightTableStars.isDisplayed();
-		LOGGER.info("Rating is " + result5);
+		LOGGER.info("Rating is displayed : " + result5);
 
 		assertEquals(true, nightTablesPage.compactNightTableAddToCartBtn.isDisplayed());
 		boolean result6 = nightTablesPage.compactNightTableAddToCartBtn.isDisplayed();
-		LOGGER.info("Add to cart button is " + result6);
+		LOGGER.info("Add to cart button is displayed : " + result6);
 
 		String devise = nightTablesPage.exractDevise();
 		assertEquals("US$", devise);
@@ -147,6 +153,12 @@ public class ShopizerCatTest {
 
 		///
 
+		String coffeeTableExtractName = tablesPage.coffeeTableName();
+		LOGGER.info("Coffee Table name is " + coffeeTableExtractName);
+
+		String coffeeTableExtractPrice = tablesPage.coffeeTablePrice();
+		LOGGER.info("Coffee Table price is " + coffeeTableExtractPrice);
+
 		tablesPage.openCoffeTablePage();
 
 		try {
@@ -158,23 +170,35 @@ public class ShopizerCatTest {
 
 		assertEquals(true, coffeetablePage.coffeeTablePrice.isDisplayed());
 		boolean result7 = coffeetablePage.coffeeTablePrice.isDisplayed();
-		LOGGER.info("Price is " + result7);
+		LOGGER.info("Price is displayed : " + result7);
 
 		assertEquals(true, coffeetablePage.coffeeTableName.isDisplayed());
 		boolean result9 = coffeetablePage.coffeeTableName.isDisplayed();
-		LOGGER.info("Name is " + result9);
+		LOGGER.info("Name is displayed : " + result9);
 
 		assertEquals(true, coffeetablePage.coffeeTableStars.isDisplayed());
 		boolean result10 = coffeetablePage.coffeeTableStars.isDisplayed();
-		LOGGER.info("Rating is " + result10);
+		LOGGER.info("Rating is displayed : " + result10);
 
 		assertEquals(true, coffeetablePage.coffeeTableAddToCartBtn.isDisplayed());
 		boolean result11 = coffeetablePage.coffeeTableAddToCartBtn.isDisplayed();
-		LOGGER.info("Add to cart button is " + result11);
+		LOGGER.info("Add to cart button is displayed : " + result11);
 
 		String devise2 = coffeetablePage.exractDeviseCoffeeTable();
 		assertEquals("US$", devise2);
 		LOGGER.info("Devise is " + devise2);
+
+		String coffeeTableNameProductPage = coffeetablePage.coffeeTableName();
+		String coffeeTablePriceProductPage = coffeetablePage.coffeeTablePrice();
+
+		assertTrue(coffeeTableExtractName.equalsIgnoreCase(coffeeTableNameProductPage));
+		LOGGER.info("Product name is the same as previous page : "
+				+ coffeeTableExtractName.equalsIgnoreCase(coffeeTableNameProductPage));
+
+		assertTrue(coffeeTableExtractPrice.equalsIgnoreCase(coffeeTablePriceProductPage));
+		LOGGER.info("Product price is the same as previous page : "
+				+ coffeeTableExtractPrice.equalsIgnoreCase(coffeeTablePriceProductPage));
+
 	}
 
 	@After

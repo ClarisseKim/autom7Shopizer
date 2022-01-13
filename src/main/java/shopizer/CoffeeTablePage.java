@@ -29,5 +29,15 @@ public class CoffeeTablePage extends BasePage {
 		String devise2 = price.substring(0, 3);
 		return devise2;
 	}
+	
+	public String coffeeTableName() {
+		String coffeeTableNameProductPage = coffeeTableName.getText();
+		return coffeeTableNameProductPage;
+	}
+
+	public String coffeeTablePrice() {
+		String coffeeTablePriceProductPage = coffeeTablePrice.getText();
+		return coffeeTablePriceProductPage;
+	}
 
 }
