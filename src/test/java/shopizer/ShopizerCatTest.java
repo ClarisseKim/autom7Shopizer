@@ -63,7 +63,7 @@ public class ShopizerCatTest {
 
 	@Test
 	public void run() {
-		driver.get("http://192.168.0.11:8080/shop");
+		driver.get("http://alexismarjollet.ddns.net:8080/shop");
 
 		HomePage homePage = new HomePage(driver);
 		NightTablesPage nightTablesPage = new NightTablesPage(driver);
