@@ -11,10 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-// import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-// import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,28 +27,32 @@ public class ShopizerCatTest {
 
 	@Before
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
-		// String browser = System.getProperty("browser");
+		// System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+		String browser = System.getProperty("browser");
 		// driver = new ChromeDriver();
-		driver = new FirefoxDriver();
+		// driver = new FirefoxDriver();
+		// driver = new InternetExplorerDriver();
 
-		/*
-		 * if (browser.equalsIgnoreCase("Firefox")) {
-		 * System.setProperty("WebDriver.gecko.driver",
-		 * "src/main/resources/driver/geckodriver.exe"); driver = new FirefoxDriver(); }
-		 * 
-		 * else if (browser.equalsIgnoreCase("Chrome")) {
-		 * System.setProperty("WebDriver.chrome.driver",
-		 * "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
-		 * 
-		 * else if (browser.equalsIgnoreCase("IE")) {
-		 * System.setProperty("WebDriver.ie.driver",
-		 * "src/main/resources/driver/IEDriverServer.exe"); driver = new
-		 * InternetExplorerDriver(); }
-		 * 
-		 * else { System.setProperty("webdriver.chrome.driver",
-		 * "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
-		 */
+		if (browser.equalsIgnoreCase("Firefox")) {
+			System.setProperty("WebDriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+
+		else if (browser.equalsIgnoreCase("Chrome")) {
+			System.setProperty("WebDriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+
+		else if (browser.equalsIgnoreCase("IE")) {
+			System.setProperty("WebDriver.ie.driver", "src/main/resources/driver/IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+		}
+
+		else {
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+
 		driver.manage().window().maximize();
 	}
 
