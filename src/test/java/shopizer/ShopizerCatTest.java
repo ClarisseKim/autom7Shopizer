@@ -34,17 +34,17 @@ public class ShopizerCatTest {
 		// driver = new InternetExplorerDriver();
 
 		if (browser.equalsIgnoreCase("Firefox")) {
-			System.setProperty("WebDriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
 
 		else if (browser.equalsIgnoreCase("Chrome")) {
-			System.setProperty("WebDriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
 			driver = new ChromeDriver();
 		}
 
 		else if (browser.equalsIgnoreCase("IE")) {
-			System.setProperty("WebDriver.ie.driver", "src/main/resources/driver/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "src/main/resources/driver/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
 
