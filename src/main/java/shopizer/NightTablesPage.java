@@ -16,11 +16,6 @@ public class NightTablesPage extends BasePage {
 	@FindBy(css = "[item-name=\"Compact night table\"]  > div >[class=\"listing-product-name\"]")
 	public WebElement compactNightTable;
 
-	// locator img from the result page, not used as of now
-	// @FindBy(css = "[item-name=\"Compact night table\"] [class=\"thumbnail
-	// product-img\"]")
-	// public WebElement compactNightTableImg;
-
 	@FindBy(css = "[id=\"productPrice\"] > del")
 	public WebElement compactNightTableInitPrice;
 
@@ -41,7 +36,6 @@ public class NightTablesPage extends BasePage {
 	public String exractDevise() {
 		wait.until(ExpectedConditions.visibilityOf(compactNightTableInitPrice));
 		String price = compactNightTableInitPrice.getText();
-		// System.out.println(price.substring(0, 3));
 		String devise = price.substring(0, 3);
 		return devise;
 	}

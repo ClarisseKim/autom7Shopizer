@@ -49,22 +49,7 @@ public class TablesPage extends BasePage {
 		return asianWoodFilterExtractText;
 	}
 
-	/*
-	 * public List<WebElement> getAllProductTablePage() { // WebElement element = //
-	 * driver.findElement(By.cssSelector("[class$=\"product\"]")); //
-	 * wait.until(ExpectedConditions.visibilityOf(productContainer));
-	 * 
-	 * try { Thread.sleep(2000); } catch (InterruptedException e) { // TODO
-	 * Auto-generated catch block e.printStackTrace(); }
-	 * 
-	 * List<WebElement> tablePageProductList =
-	 * productContainer.findElements(products); return tablePageProductList;
-	 * 
-	 * }
-	 */
-
 	public CoffeeTablePage openCoffeTablePage() {
-		// wait.until(ExpectedConditions.visibilityOf(coffeTablePageLink));
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", coffeTablePageLink);
 		return new CoffeeTablePage(this.driver);

@@ -22,7 +22,6 @@ public class HomePage extends BasePage {
 	@FindBy(css = ".mainmenu > nav:nth-child(1) > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)")
 	public WebElement bedroomBtn;
 
-	// @FindBy(xpath = "//a[@href=\"/shop/category/bedroom.html/ref=c:50\"]")
 	@FindBy(css = ".mainmenu > nav:nth-child(1) > ul:nth-child(1) > li:nth-child(4) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)")
 	public WebElement nightTableBtn;
 
@@ -35,17 +34,18 @@ public class HomePage extends BasePage {
 	// Methods
 
 	public NightTablesPage openNightTablesPage() {
+		wait.until(ExpectedConditions.visibilityOf(bedroomBtn));
 		Actions action = new Actions(driver);
 		action.moveToElement(bedroomBtn).perform();
 		wait.until(ExpectedConditions.visibilityOf(nightTableBtn));
 		nightTableBtn.click();
+
+		wait.until(ExpectedConditions.visibilityOf(compactNightTable));
 		// marche pas :
 		// Actions action2 = new Actions(driver);
 		// action2.moveToElement(compactNightTable).perform();
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", compactNightTable);
-		// wait.until(ExpectedConditions.elementToBeClickable(compactNightTable));
-		// compactNightTable.click(); not necessary with the javascript executor
 		return new NightTablesPage(this.driver);
 	}
 

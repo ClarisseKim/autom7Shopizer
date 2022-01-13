@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -28,31 +29,29 @@ public class ShopizerCatTest {
 	@Before
 	public void setUp() throws Exception {
 		// System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+		// System.setProperty("webdriver.edge.driver", "src/main/resources/driver/msedgedriver.exe");
+		// System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
 		String browser = System.getProperty("browser");
 		// driver = new ChromeDriver();
 		// driver = new FirefoxDriver();
-		// driver = new InternetExplorerDriver();
+		// driver = new EdgeDriver();
 
-		if (browser.equalsIgnoreCase("Firefox")) {
-			System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
-			driver = new FirefoxDriver();
-		}
-
-		else if (browser.equalsIgnoreCase("Chrome")) {
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
-			driver = new ChromeDriver();
-		}
-
-		else if (browser.equalsIgnoreCase("IE")) {
-			System.setProperty("webdriver.ie.driver", "src/main/resources/driver/IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
-		}
-
-		else {
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
-			driver = new ChromeDriver();
-		}
-
+		
+		 if (browser.equalsIgnoreCase("Firefox")) {
+		 System.setProperty("webdriver.gecko.driver",
+		 "src/main/resources/driver/geckodriver.exe"); driver = new FirefoxDriver(); }
+		 
+		 else if (browser.equalsIgnoreCase("Chrome")) {
+		 System.setProperty("webdriver.chrome.driver",
+		 "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
+		 
+		 else if (browser.equalsIgnoreCase("Edge")) {
+		 System.setProperty("webdriver.edge.driver",
+		 "src/main/resources/driver/msedgedriver.exe"); driver = new EdgeDriver(); }
+		  
+		 else { System.setProperty("webdriver.chrome.driver",
+		 "src/main/resources/driver/chromedriver.exe"); driver = new ChromeDriver(); }
+		 
 		driver.manage().window().maximize();
 	}
 
@@ -67,15 +66,14 @@ public class ShopizerCatTest {
 
 		homePage.openNightTablesPage();
 
+		// can't make it work with :
+		// wait.until(ExpectedConditions.visibilityOf(nightTablesPage.compactNightTableInitPrice));
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			LOGGER.info("");
 			e.printStackTrace();
 		}
 
-		// can't make it work
-		// wait.until(ExpectedConditions.visibilityOf(nightTablesPage.compactNightTableInitPrice));
 		assertEquals(true, nightTablesPage.compactNightTableInitPrice.isDisplayed());
 		boolean result2 = nightTablesPage.compactNightTableInitPrice.isDisplayed();
 		LOGGER.info("Price is " + result2);

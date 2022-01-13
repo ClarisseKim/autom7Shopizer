@@ -26,7 +26,6 @@ public class CoffeeTablePage extends BasePage {
 	public String exractDeviseCoffeeTable() {
 		wait.until(ExpectedConditions.visibilityOf(coffeeTablePrice));
 		String price = coffeeTablePrice.getText();
-		// System.out.println(price.substring(0, 3));
 		String devise2 = price.substring(0, 3);
 		return devise2;
 	}
